@@ -179,7 +179,8 @@ class Server:
                     if msg_len:
                         timestamp = datetime.datetime.now().strftime('%Y-%M-%d %H:%M:%S')
                         msg_len = int(msg_len)
-                        iv, enc_message = self.unpack_msg(clientsocket.recv(msg_len))
+                        recved_msg = clientsocket.recv(msg_len)
+                        iv, enc_message = self.unpack_msg(recved_msg=recved_msg)
                         aes_cipher = AES.new(client_sessKey, AES.MODE_CBC, iv)
                         message = unpad(aes_cipher.decrypt(enc_message), AES.block_size).decode(FORMAT)
                         if message == '/q':

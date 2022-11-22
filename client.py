@@ -133,7 +133,8 @@ class Client:
                 msg_len = self.client_socket.recv(HEADERSIZE).decode(FORMAT)
                 if msg_len:
                     msg_len = int(msg_len)
-                    iv, enc_message = self.unpack_msg(self.client_socket.recv(msg_len))
+                    recved_message = self.client_socket.recv(msg_len)
+                    iv, enc_message = self.unpack_msg(recved_message)
                     aes_cipher = AES.new(self.session_key, AES.MODE_CBC, iv)
                     message = unpad(aes_cipher.decrypt(enc_message), AES.block_size).decode(FORMAT)
                     if message == '%DISCONNT%':
