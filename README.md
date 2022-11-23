@@ -11,7 +11,12 @@ The chat incorporates the following functions:
 4) KeyWord server-to-client interaction
 5) Chat logging into a file.
 
-NOTICE: chat does not have user rooms as a built-in function.
+# Dependencies
+
+## PyCryptodome
+This library is used for RSA, AES encryption. Official API documentation: https://pycryptodome.readthedocs.io/en/latest/src/introduction.html
+
+All other libraries utilized in the project are python-built-in
 
 # Demonstation
 1) Starting the server with the following command: ```python3 server.py```
