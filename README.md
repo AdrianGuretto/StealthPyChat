@@ -16,7 +16,7 @@ The chat incorporates the following functions:
 ## PyCryptodome
 This library is used for RSA, AES encryption. Official API documentation: https://pycryptodome.readthedocs.io/en/latest/src/introduction.html
 
-All other libraries utilized in the project are python-built-in
+***All other libraries utilized in the project are python-built-in. You can find a complete list in requirements.txt***
 
 # Demonstation
 1) Starting the server with the following command: ```python3 server.py```
