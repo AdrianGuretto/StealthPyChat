@@ -28,5 +28,5 @@ This library is used for RSA, AES encryption. Official API documentation: https:
 
 # Project flaws (still in development):
 1) 10-number maximum message length—equivalent of the length of 1,000,000 characters—can be excessive, since any message will rarely reach a length of even 1000 characters
-2) Key-Exchange algorithm may have mistakes in its implementation in the code, resulting in detrimental security risks.
+2) Key-Exchange algorithm may encompass mistakes in its implementation in the code, resulting in detrimental security risks.
 3) When exiting the scripts, their threads throw in errors.
