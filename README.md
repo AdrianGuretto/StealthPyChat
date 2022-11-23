@@ -18,7 +18,7 @@ This library is used for RSA, AES encryption. Official API documentation: https:
 
 ***All other libraries utilized in the project are python-built-in. You can find a complete list in requirements.txt***
 
-# Demonstation
+# Demonstration
 1) Starting the server with the following command: ```python3 server.py```
 <img width="400" alt="Screenshot 2022-11-23 at 4 53 48 PM" src="https://user-images.githubusercontent.com/102734242/203565103-641941b7-946e-4ea5-ae63-0ebbdeada9d0.png">
 2) After the server started listenning on certain IP adress and port, we can connect the client script by executing this command: ```python3 client.py -i 127.0.0.1 -p 5555 -k ~/Desktop/client_keys``` (the variables can change depending on your conf.ini values)
@@ -28,5 +28,5 @@ This library is used for RSA, AES encryption. Official API documentation: https:
 
 # Project flaws (still in development):
 1) 10-number maximum message length—equivalent of the length of 1,000,000 characters—can be excessive, since any message will rarely reach a length of even 1000 characters
-2) Key-Exchange algorithm may have some detrimental mistakes in its implementation in the code.
+2) Key-Exchange algorithm may have mistakes in its implementation in the code, resulting in detrimental security risks.
 3) When exiting the scripts, their threads throw in errors.
