@@ -1,5 +1,5 @@
 # StealthPyChat
-AES/RSA-Encrypted Python 3.9 console chat (for now, for MacOS/Linux only)
+AES/RSA-Encrypted Python 3.9 console chat (for now, MacOS/Linux only)
 
 This project's main objective for me was to learn the basics of the Public Key cryptography utilized in our day-to-life, primarily, by means of online chatting and web interactions as a whole.
 
