@@ -110,6 +110,8 @@ class Client:
                             break
                         else:
                             print('[!] The name should be 20 characters or less and shouldn not contain special characters')
+                if response == '%NICKTAKN%':
+                    print('[!] This nickname is taken. Try another one.')
                 if response == '%AUTHACCP%':
                     self.send_msg()
         except Exception as e:
@@ -140,7 +142,6 @@ class Client:
                     if message == '%DISCONNT%':
                         break
                     print(f'{message}')
-            self.client_socket.close()
             print('[-] You have been disconnected')
             sys.exit(0)
         except ConnectionResetError as e:

@@ -113,8 +113,12 @@ class Server:
                     iv, enc_nickname = self.unpack_msg(clientsocket.recv(nickname_len))
                     dec_cipher = AES.new(client_sessKey, AES.MODE_CBC, iv)
                     nickname = unpad(dec_cipher.decrypt(enc_nickname), AES.block_size).decode(FORMAT)
+                    
+                    if nickname in [nick[2] for nick in self.clients.values()]:
+                        clientsocket.send('%NICKTAKN%'.encode(FORMAT))
+                        clientsocket.send(KEY_TAGS['auth_begin'].encode(FORMAT))
 
-                    if any(x in SPECIAL_SYMS for x in [*nickname]) == False and len(nickname) <= 20:
+                    elif any(x in SPECIAL_SYMS for x in [*nickname]) == False and len(nickname) <= 20:
                         self.clients[clientsocket][2] = nickname.strip()
                         clientsocket.send(KEY_TAGS['auth_accept'].encode(FORMAT))
                         self.clients[clientsocket][3] = True
@@ -141,6 +145,7 @@ class Server:
         (len        {'iv':'dssdwqW2==', 'data':'SDuhdwiw2231-s<_dsa'})
 
         Args:
+            * clientsocket(socket): A socket of a client for obtaining its sessKey
             * msg(str): A message needed to be sent to a socket
         
         Returns:
@@ -221,7 +226,8 @@ class Server:
         for client in list(self.clients.keys()):
             if self.clients[client][3] == True: # checks whether the client is authorized
                 if client == clientsocket: # message from the server is not sent to the client which has sent this message
-                    continue
+                    client_msg = self.buffer_msg(client, message.replace(self.clients[client][2], '<You>'))
+                    client.send(client_msg)
                 try:
                     message_send = self.buffer_msg(client, message)
                     client.send(message_send)
