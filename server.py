@@ -123,7 +123,7 @@ class Server:
                         clientsocket.send(KEY_TAGS['auth_accept'].encode(FORMAT))
                         self.clients[clientsocket][3] = True
                         print(f'[+] Client {addr} is now <{nickname}>')
-                        self.broadcast_msg(message=f"[{datetime.datetime.now().strftime('%Y-%M-%d %H:%M:%S')}] <{nickname}> has just connected!")
+                        self.broadcast_msg(message=f"[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] <{nickname}> has just connected!")
                         return True
                     else:
                         return False
